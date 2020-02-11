@@ -51,9 +51,7 @@ def horiz(gril,j,lig,col) :
             return True
         
 
-#3.7
-def diag_haut(gril, j, lig, col):
-    
+
     
 #3.6
 def vert(gril,j,lig,col) :
@@ -64,16 +62,9 @@ def vert(gril,j,lig,col) :
         elif gril[lig-1][col] == r and gril[lig-2][col] == r and gril[lig-3][col]:
             return True 
 
-#3.10
-def match_nul(gril) :
-    h =[]
-    for col in gril[0] :
-        if col != 0 :
-            h.append(7)
-    if len(h) == 7 :
-        return True
-    else :
-        return False
+#3.7
+def diag_haut(gril, j, lig, col):
+    
 
 #3.9
 def victoire(gril, j):
@@ -89,9 +80,17 @@ def victoire(gril, j):
         else:
             return(False)
         
-#3.10
+  #3.10
 def match_nul(gril) :
-        
+    h =[]
+    for col in gril[0] :
+        if col != 0 :
+            h.append(7)
+    if len(h) == 7 :
+        return True
+    else :
+        return False
+      
 #3.11
 import random 
 def coup_aleatoire(gril, j):
