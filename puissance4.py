@@ -78,13 +78,13 @@ def diag_haut(gril, j, lig, col):
 #3.9
 def victoire(gril, j):
     for j in gril:
-        if horiz() == True:
+        if horiz == True:
             return(True)
-        elif vert() == True:
+        elif vert == True:
             return(True)
-        elif diag_haut() == True:
+        elif diag_haut == True:
             return(True)
-        elif diag_bas() == True:
+        elif diag_bas == True:
             return(True)
         else:
             return(False)
