@@ -64,7 +64,16 @@ def vert(gril,j,lig,col) :
 
 #3.7
 def diag_haut(gril, j, lig, col):
-    
+    if lig>2 and col>2:
+        if gril[lig][col]==j and gril[lig-1][col-1]==j and gril[lig-2][col-2]==j and gril[lig-3][col-3]==j:
+            return True
+        else:
+            return False
+    elif lig>2 and col<4:
+        if gril[lig][col]==j and gril[lig-1][col+1]==j and gril[lig-2][col+2]==j and gril[lig-3][col+3]==j:
+            return True
+        else:
+            return False
 
 #3.9
 def victoire(gril, j):
