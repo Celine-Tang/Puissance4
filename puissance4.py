@@ -75,6 +75,19 @@ def diag_haut(gril, j, lig, col):
         else:
             return False
 
+#3.8
+def diag_bas(gril,j,lig,col):
+    if lig<3 and col>2:
+        if gril[lig][col]==j and gril[lig+1][col-1]==j and gril[lig+2][col-2]==j and gril[lig+3][col-3]:
+            return True
+        else:
+            return False
+    elif lig<3 and col<4:
+        if gril[lig][col]==j and gril[lig+1][col+1]==j and gril[lig+2][col+2]==j and gril[lig+3][col+3]:
+            return True
+        else:
+            return False
+
 #3.9
 def victoire(gril, j):
     for j in gril:
