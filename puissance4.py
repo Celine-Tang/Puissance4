@@ -1,4 +1,4 @@
-#3.1
+#3.1 
 def grille_vide():
     tableau = []
     while len(tableau)<6 :
