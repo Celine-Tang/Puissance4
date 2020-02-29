@@ -117,7 +117,7 @@ def match_nul(gril) :
 import random
 col=random.randint(0, 6)
 def coup_aleatoire(gril,j,col):
-    a=0
+    a =0
     for i in range(6):
         if gril[5-i][col]==0 and a==0:
             gril[5-i][col]=j
