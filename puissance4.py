@@ -115,11 +115,11 @@ def match_nul(gril) :
 
 #3.11
 import random
-
+col=random.randint(0, 6)
 def coup_aleatoire(gril,j,col):
-    compteur=0
+    a=0
     for i in range(6):
-        if gril[5-i][a]==0 and compteur==0:
-            gril[5-i][a]=j
-            compteur+=1
-    print (gril)
+        if gril[5-i][col]==0 and a==0:
+            gril[5-i][col]=j
+            a= a + 1
+    return(gril)
