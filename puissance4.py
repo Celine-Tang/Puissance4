@@ -1,4 +1,4 @@
-#3.1 
+#3.1
 def grille_vide():
     tableau = []
     while len(tableau)<6 :
@@ -23,9 +23,9 @@ def coup_possible(gril,col):
     c = gril[0][col]
     if c == 0 :
         return True
-    else : 
+    else :
         return False
-    
+
 #3.4
 def jouer(gril,j,col):
     if gril[5][col]==0:
@@ -40,27 +40,27 @@ def jouer(gril,j,col):
         gril[1][col]=j
     elif gril[0][col]==0:
         gril[0][col]=j
-    return gril    
+    return gril
 
-            
+
 #3.5
 def horiz(gril,j,lig,col) :
-    r = gril[lig][col] 
+    r = gril[lig][col]
     if j == r :
         if gril[lig][col+1] == r and gril[lig][col+2] == r and gril[lig][col+3]:
             return True
-        
 
 
-    
+
+
 #3.6
 def vert(gril,j,lig,col) :
-    r = gril[lig][col] 
+    r = gril[lig][col]
     if j == r :
         if gril[lig+1][col] == r and gril[lig+2][col] == r and gril[lig+3][col]:
             return True
         elif gril[lig-1][col] == r and gril[lig-2][col] == r and gril[lig-3][col]:
-            return True 
+            return True
 
 #3.7
 def diag_haut(gril, j, lig, col):
@@ -101,7 +101,7 @@ def victoire(gril, j):
             return(True)
         else:
             return(False)
-        
+
   #3.10
 def match_nul(gril) :
     h =[]
@@ -112,11 +112,21 @@ def match_nul(gril) :
         return True
     else :
         return False
-      
+
 #3.11
-import random 
-def coup_aleatoire(gril, j):
-    n = random.randint(0,7)
-    if coup_possible(gril, ) == True:
-        return jouer(gril, j, n)
-    
+import random
+
+def coup_aleatoire(gril,j,col):
+    compteur=0
+    for i in range(6):
+        if gril[5-i][a]==0 and compteur==0:
+            gril[5-i][a]=j
+            compteur+=1
+    print (gril)
+
+jouer([[0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0]],2,1)
