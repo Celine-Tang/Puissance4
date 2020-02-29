@@ -1,6 +1,9 @@
-﻿#1
+#3.1
 def grille_vide():
-    return [[0 for j in range(7)] for i in range(6)]
+    tableau = []
+    while len(tableau)<6 :
+        tableau.append([0,0,0,0,0,0,0])
+    return tableau
 grille_vide()
 
 assert len(grille_vide()[0])==7
