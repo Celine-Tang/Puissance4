@@ -45,22 +45,29 @@ def jouer(gril,j,col):
 
 #3.5
 def horiz(gril,j,lig,col) :
-    r = gril[lig][col]
-    if j == r :
-        if gril[lig][col+1] == r and gril[lig][col+2] == r and gril[lig][col+3]:
-            return True
-
-
-
+	if 3 >= col :
+		if gril[lig][col+1] == j and gril[lig][col+2] == j and gril[lig][col+3] == j:
+			return True
+		else :
+			return False
+	elif col >= 3 :
+		if gril[lig][col-1] == j and gril[lig][col-2] == j and gril[lig][col-3] == j:
+			return True
+		else :
+			return False
 
 #3.6
 def vert(gril,j,lig,col) :
-    r = gril[lig][col]
-    if j == r :
-        if gril[lig+1][col] == r and gril[lig+2][col] == r and gril[lig+3][col]:
-            return True
-        elif gril[lig-1][col] == r and gril[lig-2][col] == r and gril[lig-3][col]:
-            return True
+	if 3>lig :
+		if gril[lig+1][col] == j and gril[lig+2][col] == j and gril[lig+3][col] == j:
+			return True
+		else :
+			return False
+	elif lig>=3 :
+		if gril[lig-1][col] == j and gril[lig-2][col] == j and gril[lig-3][col] == j:
+			return True
+		else :
+			return False
 
 #3.7
 def diag_haut(gril, j, lig, col):
@@ -89,18 +96,17 @@ def diag_bas(gril,j,lig,col):
             return False
 
 #3.9
-def victoire(gril, j):
-    for j in gril:
-        if horiz == True:
-            return(True)
-        elif vert == True:
-            return(True)
-        elif diag_haut == True:
-            return(True)
-        elif diag_bas == True:
-            return(True)
-        else:
-            return(False)
+def victoire(gril, j, lig, col):
+	if horiz(gril, j, lig, col)== True:
+		return True
+	elif vert(gril, j, lig, col) == True:
+		return True
+	elif diag_haut(gril, j, lig, col) == True:
+		return True
+	elif diag_bas(gril, j, lig, col) == True:
+		return True
+	else:
+		return False
 
   #3.10
 def match_nul(gril) :
@@ -115,11 +121,43 @@ def match_nul(gril) :
 
 #3.11
 import random
-col=random.randint(0, 6)
-def coup_aleatoire(gril,j,col):
-    a=0
-    for i in range(6):
-        if gril[5-i][col]==0 and a==0:
-            gril[5-i][col]=j
-            a= a + 1
-    return(gril)
+def coup_aleatoire(gril,j):
+	a = random.randint(0,6)
+	if gril[5][a] == 0 :
+		gril[5][a] = j
+	elif gril[4][a] == 0 :
+		gril[4][a] = j
+	elif gril[3][a] == 0 :
+		gril[3][a] = j
+	elif gril[2][a] == 0 :
+		gril[2][a] = j
+	elif gril[1][a] == 0 :
+		gril[1][a] = j
+	elif gril[0][a] == 0 :
+		gril[0][a] = j
+	return(gril)
+
+
+#fonction du jeu final
+def jeu_fini():
+	gril = grille_vide()
+	j = 1 #futil (pour éviter une erreur à la fonction victoire)
+	lig = 0 #futil (pour éviter une erreur à la fonction victoire)
+	col = 0 #futil (pour éviter une erreur à la fonction victoire)
+	while match_nul(gril) or victoire(gril,j,lig,col) == False :
+		j = int(input("insérer votre joueur :"))
+		x = str(input("voulez-vous un coup aléatoire ? (répondre 'oui' ou 'non')"))
+		if x == "oui" :
+			coup_aleatoire(gril,j)
+		else :
+			lig = int(input("insérer la ligne :")) #pour vérifier s'il y a victoire du joueur
+			col = int(input("insérer la colonne:"))
+			if coup_possible(gril,col) == True :
+				jouer(gril,j,col)
+		affiche(gril)
+	if match_nul(gril) == True :
+		return ("match nul")
+	elif victoire(gril,j,lig,col) == True :
+		return ("victoire du joueur", j)
+
+
